@@ -1,14 +1,22 @@
+import { ValuesOf } from "./externals"
+
 /**
- * My awesome module.
- * @param input Lorem ipsum.
- * @param postfix Lorem ipsum.
+ * Put an element after another element.
+ * @param el The element to search.
+ * @param find The search key. Can be a specific part of the element or an index.
+ * @param add The element to add.
  * @example
  * ```
- * const theModule = require("the-module");
- * theModule("unicorns");
- * //=> 'unicorns & rainbows'
+ * const putAfter = require("put-after");
+ *
+ * putAfter("ac", "a", "b")
+ * //=> 'abc'
+ *
+ * putAfter(["a", "c"], "a", "b")
+ * //=> ['a', 'b', 'c']
  * ```
 */
-declare function theModule(input: string, { postfix }: { postfix?: string }): string;
+declare function putAfter(el: string, find: string | number, add: string): string;
+declare function putAfter<T extends array>(el: T, find: ValuesOf<T> | number, add: any): typeof T;
 
-export = theModule;
+export = putAfter;

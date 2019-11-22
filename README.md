@@ -1,41 +1,45 @@
-# The module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# Put after [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/put-after/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/put-after)
 
-My awesome module.
+Put an element after another element.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/put-after.png)](https://npmjs.com/package/put-after)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install put-after
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const putAfter = require("put-after");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+putAfter("ac", "a", "b")
+//=> 'abc'
+
+putAfter(["a", "c"], "a", "b")
+//=> ['a', 'b', 'c']
 ```
 
 ## API
 
-### theModule(input, options?)
+### putAfter(el, find, add)
 
-#### input
+#### el
 
-Type: `string`
+Type: `string or array`
 
-Lorem ipsum.
+The element to search.
 
-#### options
+#### el
 
-Type: `object`
+Type: `string or number`
 
-##### postfix
+The search key. Can be a specific part of the element or an index.
 
-Type: `string`\
-Default: `rainbows`
+#### add
 
-Lorem ipsum.
+Type: `any`
+
+The element to add.
