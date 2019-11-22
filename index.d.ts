@@ -17,6 +17,6 @@ import { ValuesOf } from "./externals"
  * ```
 */
 declare function putAfter(el: string, find: string | number, add: string): string;
-declare function putAfter<T extends array>(el: T, find: ValuesOf<T> | number, add: any): typeof T;
+declare function putAfter<T extends any[]>(el: T, find: ValuesOf<T> | number, add: any): T;
 
 export = putAfter;
