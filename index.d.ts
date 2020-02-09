@@ -1,4 +1,4 @@
-import { ValuesOf } from "./externals"
+type ValueOf<T extends any[]> = T[number];
 
 /**
  * Put an element after another element.
@@ -17,6 +17,6 @@ import { ValuesOf } from "./externals"
  * ```
 */
 declare function putAfter(el: string, find: string | number, add: string): string;
-declare function putAfter<T extends any[]>(el: T, find: ValuesOf<T> | number, add: any): T;
+declare function putAfter<T extends any[]>(el: T, find: ValueOf<T> | number, add: any): T;
 
 export = putAfter;

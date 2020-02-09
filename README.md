@@ -43,3 +43,7 @@ The search key. Can be a specific part of the element or an index.
 Type: `any`
 
 The element to add.
+
+## Migrating from v1
+
+- Minimum support version of Node.js is now 10.
