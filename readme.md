@@ -13,7 +13,7 @@ npm install put-after
 ## Usage
 
 ```js
-const putAfter = require("put-after");
+const putAfter = require("put-after")
 
 putAfter("ac", "a", "b")
 //=> 'abc'
@@ -24,17 +24,17 @@ putAfter(["a", "c"], "a", "b")
 
 ## API
 
-### putAfter(el, find, add)
+### putAfter(source, find, add)
 
-#### el
+#### source
 
-Type: `string or array`
+Type: `string | array`
 
 The element to search.
 
-#### el
+#### find
 
-Type: `string or number`
+Type: `string | number`
 
 The search key. Can be a specific part of the element or an index.
 
@@ -43,7 +43,3 @@ The search key. Can be a specific part of the element or an index.
 Type: `any`
 
 The element to add.
-
-## Migrating from v1
-
-- Minimum support version of Node.js is now 10.

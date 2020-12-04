@@ -1,24 +1,33 @@
 "use strict"
 
-const stringSplice = require("string-splice")
-const { default: is } = require("@sindresorhus/is")
-
-module.exports = (el, find, add) => {
-	if (is.string(el)) {
-		if (is.string(find)) return el.replace(find, find + add)
-		if (is.number(find)) return stringSplice(el, find, 0, add)
-		throw new ReferenceError("The element to find is not a string or a number!")
-	} else if (is.array(el)) {
-		const index = el.indexOf(find)
-		if (index > -1) {
-			el = [...el]
-			el.splice(index + 1, 0, add)
-			return el
+module.exports = (source, find, add) => {
+	if (typeof source === "string") {
+		if (typeof find === "string") {
+			return source.replace(find, find + add)
 		}
 
-		if (is.number(find)) return el.splice(find, 0, add)
-		throw new ReferenceError("The element to find is not in the array or a number!")
+		if (typeof find === "number") {
+			return source.slice(0, find + 1) + add + source.slice(find + 1)
+		}
+
+		throw new TypeError("The element to find is not a string or a number!")
+	} else if (Array.isArray(source)) {
+		let index = source.indexOf(find)
+
+		if (index === -1) {
+			if (typeof find !== "number") {
+				throw new TypeError("The element to find is not in the array or an index!")
+			}
+
+			index = find
+		}
+
+		return [
+			...source.slice(0, index + 1),
+			add,
+			...source.slice(index + 1)
+		]
 	}
 
-	throw new ReferenceError("Provided element is not a string or array!")
+	throw new TypeError(`Expected a string or an array, got ${typeof source}`)
 }
